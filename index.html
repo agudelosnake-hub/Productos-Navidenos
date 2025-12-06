@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Sabores Tradicionales Delicias Margoth</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <style>
     * {
@@ -22,6 +22,18 @@
       min-height: 100vh;
       padding: 16px;
       position: relative;
+      overflow: hidden;
+    }
+
+    /* Partículas navideñas en todo el cuerpo */
+    #particles-js {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
     }
 
     .card {
@@ -32,21 +44,38 @@
       box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
       overflow: hidden;
       position: relative;
+      z-index: 2;
     }
 
     .header {
       background: linear-gradient(135deg, #c00000, #8b0000);
       color: #ffd700;
       text-align: center;
-      padding: 24px 16px 20px;
+      padding: 24px 16px 12px;
       position: relative;
     }
 
     .header h1 {
-      font-size: 19px;
+      font-family: 'Dancing Script', cursive;
+      font-size: 26px;
       font-weight: 700;
-      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-      letter-spacing: 0.5px;
+      text-shadow: 
+        0 2px 4px rgba(0,0,0,0.3),
+        0 0 10px rgba(255,215,0,0.7);
+      letter-spacing: 1px;
+      color: #ffd700;
+      margin-bottom: 6px;
+    }
+
+    .header p {
+      font-size: 14px;
+      font-weight: 500;
+      color: #fff;
+      line-height: 1.4;
+      padding: 0 12px;
+      background: rgba(0,0,0,0.1);
+      border-radius: 8px;
+      margin-top: 8px;
     }
 
     .lights {
@@ -216,10 +245,15 @@
   </style>
 </head>
 <body>
+
+  <!-- Partículas navideñas -->
+  <div id="particles-js"></div>
+
   <div class="card">
     <div class="header">
       <div class="lights">✨</div>
       <h1>Sabores Tradicionales Delicias Margoth</h1>
+      <p>Todos los productos que desees para tus novenas, cena navideña y demás ocasiones especiales 🎅🎄</p>
     </div>
 
     <div class="products-grid">
@@ -280,7 +314,43 @@
     <i class="fab fa-whatsapp"></i>
   </a>
 
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
   <script>
+    // Configuración de partículas navideñas
+    particlesJS("particles-js", {
+      particles: {
+        number: { value: 80, density: { enable: true, value_area: 800 } },
+        color: { value: ["#c00000", "#ffd700", "#ffffff"] },
+        shape: {
+          type: "circle",
+          stroke: { width: 0, color: "#000000" }
+        },
+        opacity: {
+          value: 0.7,
+          random: true,
+          anim: { enable: false }
+        },
+        size: {
+          value: 3,
+          random: true
+        },
+        move: {
+          enable: true,
+          speed: 0.5,
+          direction: "bottom",
+          random: true,
+          straight: false,
+          bounce: false
+        }
+      },
+      interactivity: {
+        detect_on: "canvas",
+        events: { onhover: { enable: false }, onclick: { enable: false } }
+      },
+      retina_detect: true
+    });
+
+    // Interactividad botones
     const pricesSection = document.getElementById('pricesSection');
     const btnPrecios = document.getElementById('btnPrecios');
 
